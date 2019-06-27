@@ -40,10 +40,10 @@ EXEC dbo.uspNoneOut
 
 --4.) For each book that is loaned out from the "Sharpstown" branch and whose DueDate is today, retrieve the book title, the borrower's name, and the borrower's address.
 GO
-CREATE PROCEDURE dbo.uspDueTodaySharpstown
+ALTER PROCEDURE dbo.uspDueTodaySharpstown
 AS
+	SELECT title,barrowerName,barrowerAddress
 	FROM bookLoans
-	SELECT books.title,barrowerName,barrowerAddress
 	INNER JOIN libraryBranch ON libraryBranch.branchID = bookLoans.branchID
 	INNER JOIN books ON books.bookID = bookLoans.bookID
 	INNER JOIN barrower ON barrower.cardNumber = bookLoans.cardNumber
